@@ -10,6 +10,21 @@ const app = new Vue({
             '<game-add @new="addNewGame"></game-add>',      // Component fill amb esdeveniment @new (escoltat pel pare)
             '<game-list v-bind:games="games"></game-list>', // Component fill amb directiva v-bind (enllaça una propietat interna del component amb un model (games) de l'element pare)
         '</div>'
-    ].join('')
-        
+    ].join(''),
+    
+    // Tots els models que un component o instància defineixen internament, s'han d'afegir dintre de data.
+    data: {
+        games: [
+            { title: 'ME: Andromeda' },
+            { title: 'Fifa 2017' },
+            { title: 'League of Legend' }
+        ]
+    },
+
+    // Mètodes
+    methods: {
+        addNewGame: function (game) {
+            this.games.push(game);
+        }
+    }
 });
