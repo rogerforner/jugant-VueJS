@@ -1,14 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Example templates</title>
 </head>
+
 <body>
-    <div id="app"></div>
+    <div id="app" v-cloak>
+        <!-- Variable con un filtro; Las variables se insertan dentro de {{ }}  -->
+        <h1>Bienvenido {{ user.name | uppercase }}</h1>
+
+        <!-- condicional if: El <div> aparecerá si se cumple la condición -->
+        <div class="login-errors-container" v-if="errors.length !== 0">
+            <ol class="login-errors">
+                <!-- bucle for: iterar el <li> por cada error que exista dentro
+                del array errors -->
+                <li v-for="error in errors"> {{ error }}</li>
+            </ol>
+        </div>
+
+        <!-- v-on:submit.prevent prevenir que el submit llegue a procesarse para
+        poder trabajar con los datos en el JavaScript -->
+        <form class="login" v-on:submit.prevent="onLogin">
+            <div class="login-field">
+                <label for="username">Nombre de usuario</label>
+                <!-- v-model nos sirve para capturar el valor introducido en el
+                input -->
+                <input id="username" type="text" v-model="user.name" />
+            </div>
+
+            <div class="login-field">
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" v-model="user.password" />
+            </div>
+
+            <div class="login-field">
+                <!-- v-bind:disabled nos permite asignar el atributo disabled
+                segun la lógica de la aplicación (isFormEmpty) -->
+                <button type="submit" v-bind:disabled="isFormEmpty">Entrar</button>
+            </div>
+        </form>
+
+        <!-- v-bind:href nos permite asignar el valor de la variable urlPasswordChange
+        al atributo href -->
+        <a v-bind:href="urlPasswordChange" target="_blank">
+            ¿Has olvidado tu contraseña?
+        </a>
+    </div>
+
     <script src="../node_modules/vue/dist/vue.js"></script>
     <script src="../assets/js/1.2_templates.js"></script>
 </body>
+
 </html>

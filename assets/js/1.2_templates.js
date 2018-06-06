@@ -1,105 +1,57 @@
 /*
 |-------------------------------------------------------------------------------
-| Components de Vue
-|-------------------------------------------------------------------------------
-| Els components de Vue van per sobre de la instància de Vue.
-|
-| Tenint en compte la plantilla HTML generada en la instància:
-| 1. game-header
-| 2. game-add
-| 3. game-list
-|
-*/
-
-/* game-header
------------------------------------------------------------------------------ */
-Vue.component('game-header', {
-    template: '<h1>Video Games</h1>'
-});
-
-/* game-add
------------------------------------------------------------------------------ */
-Vue.component('game-add', {
-    // Plantilla
-    template: [
-        '<div>',
-            '<input type="text" v-model="titleGame" />',    // v-model ens permet anar obtenint el valor del input, el qual sera afegit a la variable titleGame.
-            '<button @click="emitNewGame">Añadir</button>', // Dur a terme la funció emitGame quan es faci clic (mètode).
-        '</div>' 
-    ].join(''),
-
-    // L'element data, en un component, s0inicialitza com una funció i no com un objecte (tal i com passa en la instància de Vue).
-    data: function () {
-        return {
-            titleGame: null
-        }
-    },
-
-    // Mètodes
-    methods: {
-        // La funció mira si l'input està buit i, si no ho està, llança ($emit) un esdeveniment al component pare, permetent que sigui traspassat, de pare a fill, el títol introduït en l'input.
-        emitNewGame: function () {
-            if (this.titleGame) {
-                this.$emit('new', { title: this.titleGame });
-                this.titleGame = null;
-            }
-        }
-    },
-});
-
-/* game-list
-El component game-list conté un altre component, game-item.
------------------------------------------------------------------------------ */
-Vue.component('game-list', {
-    props: ['games'],
-    template: [
-        '<ol>',
-            '<game-item v-for="item in games" :game="item" :key="item.id"></game-item>',
-        '</ol>'
-    ].join('')
-});
-
-Vue.component('game-item', {
-    // Són com els paràmetres d'una funció, en aquest cas variables que són passades del component pare al fill.
-    // Aquestes variables són afegides com si foren atributs (en el pare) => :game="item".
-    props: ['game'],
-    template: '<li>{{ game.title }}</li>'
-});
-
-/*
-|-------------------------------------------------------------------------------
 | Instància de Vue
 |-------------------------------------------------------------------------------
-| Generar una instància que tingui com a referència l'element HTML amb
-| identificador app => <div id="app"></div>
+| Generar una instáncia que tenga como referencia el elemento HTML con id="app"
 |
 */
 
 const app = new Vue({
+    // Referenciar el elemento html por su id.
     el: '#app',
 
-    // Afegim una plantilla dintre de l'element HTML referenciat.
-    template: [
-        '<div class="view">',
-            '<game-header></game-header>',                  // Component fill
-            '<game-add @new="addNewGame"></game-add>',      // Component fill amb esdeveniment @new (escoltat pel pare)
-            '<game-list v-bind:games="games"></game-list>', // Component fill amb directiva v-bind (enllaça una propietat interna del component amb un model (games) de l'element pare)
-        '</div>'
-    ].join(''),
-    
-    // Tots els models que un component o instància defineixen internament, s'han d'afegir dintre de data.
+    // Modelo (datos/variables inicializadas)
     data: {
-        games: [
-            { title: 'ME: Andromeda' },
-            { title: 'Fifa 2017' },
-            { title: 'League of Legend' }
-        ]
+        user: {
+            name: null,
+            password: null
+        },
+        urlPasswordChange: 'http://localhost:8080',
+        errors: []
     },
 
-    // Mètodes
+    // Propiedades computadas.
+    // Éstas són como métodos, aunque utilizadas para hacer más simple la lógica
+    // en las plantillas. No es lo mismo insertar en la plantilla toda la lógica
+    // de "isFormEmpty" = !(this.user.name && this.user.password) a insertar
+    // únicamente "isFormEmpty"
+    computed: {
+        isFormEmpty: function () {
+            return !(this.user.name && this.user.password);
+        }
+    },
+
+    // Métodos
     methods: {
-        addNewGame: function (game) {
-            this.games.push(game);
+        onLogin: function () {
+            this.errors = [];
+
+            if (this.user.name.length < 6) {
+                this.errors.push('El nombre de usuario tiene que tener al menos 6 caracteres');
+            }
+
+            if (this.user.password.length < 6) {
+                this.errors.push('La contraseña tiene que tener al menos 6 caracteres');
+            }
+        }
+    },
+
+    // Filtros
+    // Existe un paquete que nos facilita la utilización de los filtros.
+    // https://github.com/freearhey/vue2-filters (en este caso no lo usamos).
+    filters: {
+        uppercase: function (data) {
+            return data && data.toUpperCase();
         }
     }
 });
