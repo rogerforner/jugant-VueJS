@@ -1,6 +1,6 @@
 /*
 |-------------------------------------------------------------------------------
-| Instància de Vue
+| Instáncia de Vue
 |-------------------------------------------------------------------------------
 | Generar una instáncia que tenga como referencia el elemento HTML con id="app"
 |
