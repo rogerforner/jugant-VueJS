@@ -49,7 +49,7 @@ new Vue({
 
 Mostrar u ocultar elementos del DOM:
 
-- **v-show**: aplica un display="none".
+- **v-show**: aplica un display = none.
 - **v-if**: elimina el elemento HTML del DOM.
 
 Podemos encapsular elemtos HTML dentro de `<template>...</template>` de tal modo que podamos utilizar `v-if` o `v-show` sin la necesidad de aplicarlo a cada uno de los elementos, por separado. _template_ no va a ser creado, viéndose, nadamás, los elementos contenidos en éste (en el código).
