@@ -9,24 +9,15 @@
 <body>
     <main>
         <ul>
-            <li v-for="dia in laborales">{{ dia }}</li>
+            <li v-for="tarea in tareas">{{ tarea }}</li>
         </ul>
 
-        <hr>
-
-        <ul>
-            <li v-for="(tarea, index) in tareas">
-                {{ index }} - {{ tarea.nombre }} [{{ tarea.prioridad }}]
-            </li>
-        </ul>
-
-        <hr>
-
-        <ul>
-            <li v-for="(value, key, index) in persona">
-                {{ index }} - {{ key }}: {{ value }}
-            </li>
-        </ul>
+        <form>
+            <input type="text" placeholder="Introduce una tarea"
+                v-model="nuevaTarea"
+                v-on:keyup.enter="agregarTarea">
+            <input type="submit" value="Enviar tarea" v-on:click="agregarTarea">
+        </form>
 
         <pre>{{ $data }}</pre>
     </main>

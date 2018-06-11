@@ -1,16 +1,18 @@
 new Vue({
     el: 'main',
     data: {
-        laborales: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'],
+        nuevaTarea: null,
+
         tareas: [
-            {nombre: 'tarea 1', prioridad: 'baja'},
-            {nombre: 'tarea 2', prioridad: 'alta'},
-            {nombre: 'tarea 3', prioridad: 'alta'},
+            'Aprender Vue.js',
+            'Aprender ES6',
+            'Firebase'
         ],
-        persona: {
-            nombre: 'Roger',
-            profesion: 'padawan',
-            ciudad: 'Tortosa'
+    },
+    methods: {
+        agregarTarea() {
+            this.tareas.unshift(this.nuevaTarea);
+            this.nuevaTarea = null;
         }
     }
 });

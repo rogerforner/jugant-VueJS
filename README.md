@@ -8,6 +8,7 @@
         - [1.2 Directivas incluídas](#12-directivas-incluidas)
         - [1.3 Renderizado de listas](#13-renderizado-de-listas)
         - [1.4 Vue DevTools](#14-vue-devtools)
+        - [1.5 Eventos](#15-eventos)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -153,6 +154,12 @@ vm = new Vue({
 ### 1.4 Vue DevTools
 
 - [Vue DevTools](https://github.com/vuejs/vue-devtools).
+
+### 1.5 Eventos
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/events.html)
+
+
 
 # Bibliografía Web
 
