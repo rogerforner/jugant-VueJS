@@ -7,6 +7,7 @@
         - [1.1 Instalación y data binding](#11-instalacion-y-data-binding)
         - [1.2 Directivas incluídas](#12-directivas-incluidas)
         - [1.3 Renderizado de listas](#13-renderizado-de-listas)
+        - [1.4 Vue DevTools](#14-vue-devtools)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -149,7 +150,10 @@ vm = new Vue({
 - 1 - profesion: padawan
 - 2 - ciudad: Tortosa
 
+### 1.4 Vue DevTools
+
+- [Vue DevTools](https://github.com/vuejs/vue-devtools).
+
 # Bibliografía Web
 
 - [_Aprende Vue2 y Firebase paso a paso_](https://wmedia.teachable.com/p/aprende-vue2-y-firebase-paso-a-paso), de Wmedia.
-- [Vue DevTools](https://github.com/vuejs/vue-devtools).

@@ -1,4 +1,4 @@
-vm = new Vue({
+new Vue({
     el: 'main',
     data: {
         laborales: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'],
