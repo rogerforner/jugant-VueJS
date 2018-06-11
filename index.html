@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aprendiendo Vue.js y Firebase</title>
+</head>
+<body>
+    <main> <!-- el: main -->
+        <h1>{{ mensaje }}</h1> <!-- data: {mensaje:''} -->
+        <input type="text" v-model="mensaje"> <!-- Valor = data: {mensaje:''} -->
+        <pre>{{ $data }}</pre> <!-- Mostrar data en JSON -->
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
