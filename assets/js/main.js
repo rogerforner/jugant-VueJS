@@ -1,6 +1,7 @@
-new Vue({
+vm = new Vue({
     el: 'main',
     data: {
-        mensaje: 'hola mundo'
+        conectado: false,
+        edad: 31,
     }
 });

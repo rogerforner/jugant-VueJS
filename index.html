@@ -7,10 +7,25 @@
     <title>Aprendiendo Vue.js y Firebase</title>
 </head>
 <body>
-    <main> <!-- el: main -->
-        <h1>{{ mensaje }}</h1> <!-- data: {mensaje:''} -->
-        <input type="text" v-model="mensaje"> <!-- Valor = data: {mensaje:''} -->
-        <pre>{{ $data }}</pre> <!-- Mostrar data en JSON -->
+    <main>
+        <h1 v-if="conectado">Estoy conectado</h1>
+        <h2 v-if="edad < 18">No puedes entrar</h2>
+        <h2 v-else-if="edad > 200">Eres inmortal</h2>
+        <h2 v-else="edad > 200">Puedes entrar</h2>
+        
+        <template v-if="conectado">
+            <h3>Bienvenido/da</h3>
+            <ul>
+                <li>
+                    <a href="#">Mis datos</a>
+                    <a href="#">Mensajes</a>
+                    <a href="#">Salir</a>
+                </li>
+            </ul>
+        </template>
+        <h4 v-else>No estás conectado</h4>
+
+        <pre>{{ $data }}</pre>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
