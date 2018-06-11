@@ -6,6 +6,7 @@
     - [1. Vue.js esencial](#1-vuejs-esencial)
         - [1.1 Instalación y data binding](#11-instalacion-y-data-binding)
         - [1.2 Directivas incluídas](#12-directivas-incluidas)
+        - [1.3 Renderizado de listas](#13-renderizado-de-listas)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -67,6 +68,86 @@ Podemos encapsular elemtos HTML dentro de `<template>...</template>` de tal modo
 ```html
 <h3>Hola</h3>
 ```
+
+### 1.3 Renderizado de listas
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/list.html)
+
+**Matriz**
+
+```js
+vm = new Vue({
+    el: 'main',
+    data: {
+        laborales: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
+    }
+});
+```
+
+```html
+<ul>
+    <li v-for="dia in laborales">{{ dia }}</li>
+</ul>
+```
+
+- Lunes
+- Martes
+- Miércoles
+- Jueves
+- Viernes
+
+**Matriz de objetos (collection)**
+
+```js
+vm = new Vue({
+    el: 'main',
+    data: {
+        tareas: [
+            {nombre: 'tarea 1', prioridad: 'baja'},
+            {nombre: 'tarea 2', prioridad: 'alta'},
+            {nombre: 'tarea 3', prioridad: 'alta'},
+        ]
+    }
+});
+```
+- 0 - tarea 1 [baja]
+- 1 - tarea 2 [alta]
+- 2 - tarea 3 [alta]
+
+```html
+<ul>
+    <li v-for="(tarea, index) in tareas">
+        {{ index }} - {{ tarea.nombre }} [{{ tarea.prioridad }}]
+    </li>
+</ul>
+```
+
+**Objeto**
+
+```js
+vm = new Vue({
+    el: 'main',
+    data: {
+        persona: {
+            nombre: 'Roger',
+            profesion: 'padawan',
+            ciudad: 'Tortosa'
+        }
+    }
+});
+```
+
+```html
+<ul>
+    <li v-for="(value, key, index) in persona">
+        {{ index }} - {{ key }}: {{ value }}
+    </li>
+</ul>
+```
+
+- 0 - nombre: Roger
+- 1 - profesion: padawan
+- 2 - ciudad: Tortosa
 
 # Bibliografía Web
 
