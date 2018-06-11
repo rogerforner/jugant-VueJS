@@ -164,6 +164,7 @@ Algunos ejemplos:
 - **v-on:click** => Cuando se realiza un click sobre el elemnto HTML que lo incluye.
 - **v-on:keyup** => Cuando se deja de presional una tecla.
 - **v-on:keyup.enter** => Cuando se deja de presionar la tecla _Enter_.
+    - [Key Modifiers](https://vuejs.org/v2/guide/events.html#Key-Modifiers).
 - **v-on:submit** => Cuando se ejecuta el _submit_ de un formulario.
 - **v-on:submit.prevent** => Cuando se realiza un _submit_ y se previene que la página sea recargada.
     - [Event Modifiers](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
