@@ -1,22 +1,23 @@
 new Vue({
     el: 'main',
     data: {
-        mensaje: 'Hola mundo ^^'
-    },
-    beforeUpdate() {
-        console.log('Before update: ', this.mensaje);
-    },
-    updated() {
-        console.log('Updated: ', this.mensaje);
+        tareas: [
+            {titulo: 'tarea 1', completado: false},
+            {titulo: 'tarea 2', completado: false},
+            {titulo: 'tarea 3', completado: false},
+            {titulo: 'tarea 4', completado: false},
+            {titulo: 'tarea 5', completado: false},
+            {titulo: 'tarea 6', completado: false},
+        ]
     },
     methods: {
-        alReves() {
-            this.mensaje = this.mensaje.split('').reverse().join('');
+        completarTarea(tarea) {
+            tarea.completado = !tarea.completado;
         }
     },
     computed: {
-        mensajeMayusculas() {
-            return this.mensaje.toUpperCase();
+        tareasCompletadas() {
+            return this.tareas.filter((tarea) => tarea.completado);
         }
     }
 });

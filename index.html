@@ -5,11 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aprendiendo Vue.js y Firebase</title>
+    <style>
+    .completada {
+        background-color: greenyellow;
+    }
+    </style>
 </head>
 <body>
     <main>
-        <h3 v-text="mensaje"></h3>
-        <button @click="alReves">Al revés</button>
+        <p>Tareas completadas: <span v-text="tareasCompletadas.length"></span></p>
+        <ul>
+            <li @click="completarTarea(tarea)"
+                v-for="tarea in tareas">
+                <ul style="list-style: none;">
+                    <li><strong>Tarea:</strong>{{ tarea.titulo }}</li>
+                    <li :class="{completada: tarea.completado}">
+                        <strong>Completada:</strong>{{ tarea.completado }}
+                    </li>
+                </ul>
+                <hr style="width: 185px; margin-left: 0">
+            </li>
+        </ul>
 
         <pre>{{ $data }}</pre>
     </main>

@@ -12,6 +12,7 @@
         - [1.6 Propiedades computadas](#16-propiedades-computadas)
         - [1.7 Filtros](#17-filtros)
         - [1.8 La instancia Vue](#18-la-instancia-vue)
+        - [1.9 Data binding en atributos y clases](#19-data-binding-en-atributos-y-clases)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -273,6 +274,24 @@ const vm2 = new Vue({
         }
     }
 });
+```
+
+### 1.9 Data binding en atributos y clases
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/class-and-style.html)
+
+Mediante la propiedad **v-bind** de Vue podemos manipular los valores de los atributos de los elementos HTML.
+
+**Botón con la classe _active_** (Si isActive = true)
+
+```html
+<button v-bind:class="{active: isActive}"></button>
+```
+
+**Versión abreviada de v-bind** (caso anterior)
+
+```html
+<button :class="{active: isActive}"></button>
 ```
 
 # Bibliografía Web
