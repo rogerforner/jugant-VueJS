@@ -10,6 +10,8 @@
         - [1.4 Vue DevTools](#14-vue-devtools)
         - [1.5 Eventos](#15-eventos)
         - [1.6 Propiedades computadas](#16-propiedades-computadas)
+        - [1.7 Filtros](#17-filtros)
+        - [1.8 La instancia Vue](#18-la-instancia-vue)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -206,6 +208,72 @@ new Vue({
 });
 ```
 
+### 1.7 Filtros
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/computed.html)
+
+Las propiedades computadas son útiles para filtrar (campos de búsqueda, rangos, etc.).
+
+**Podemos crear nuestros propios filtros**
+
+_Éstos deben insertarse antes de la instancia Vue._
+
+```js
+Vue.filter('alReves',(valor) => valor.split('').reverse().join(''));
+
+new Vue({...});
+```
+
+```html
+<h5>{{ juego.titulo | alReves }}</h5>
+```
+
+**Podemos utilizar filtros proporcionados por otras librerías**
+
+- [vue2-filters](https://github.com/freearhey/vue2-filters)
+- [Lodash](https://lodash.com/)
+
+### 1.8 La instancia Vue
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/instance.html)
+
+La instancia de Vue es la intermediaria entre el DOM y la lógica de la aplicación.
+
+```js
+new Vue({...});
+```
+
+Podemos crear más de una instancia Vue, solo hay que guardar cada una en variables.
+
+```js
+const vm1 = new Vue({...});
+const vm2 = new Vue({...});
+const vmN = new Vue({...});
+```
+
+Además, se puede acceder desde una instancia a otra instancia.
+
+```js
+const vm1 = new Vue({
+    el: 'main',
+    data: {
+        mensaje: 'Hola mundo ^^'
+    },
+    ...
+});
+
+const vm2 = new Vue({
+    el: '#app',
+    data: {
+        mensaje: 'Hola luna :)'
+    },
+    methods: {
+        cambiarMensajeDeVm1() {
+            vm1.mensaje = this.mensaje;
+        }
+    }
+});
+```
 
 # Bibliografía Web
 

@@ -8,21 +8,8 @@
 </head>
 <body>
     <main>
-        <h1>{{ mensajeAlReves }}</h1>
-
-        <h3>Tareas con prioridad</h3>
-        <ul>
-            <li v-for="tarea in tareasConPrioridad">
-                {{ tarea.titulo }} | {{ tarea.prioridad }} | {{ tarea.antiguedad }}
-            </li>
-        </ul>
-        <hr>
-        <h3>Tareas por antigüedad</h3>
-        <ul>
-                <li v-for="tarea in tareasPorAntiguedad">
-                    {{ tarea.titulo }} | {{ tarea.prioridad }} | {{ tarea.antiguedad }}
-                </li>
-            </ul>
+        <h3 v-text="mensaje"></h3>
+        <button @click="alReves">Al revés</button>
 
         <pre>{{ $data }}</pre>
     </main>
