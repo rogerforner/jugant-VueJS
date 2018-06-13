@@ -9,6 +9,7 @@
         - [1.3 Renderizado de listas](#13-renderizado-de-listas)
         - [1.4 Vue DevTools](#14-vue-devtools)
         - [1.5 Eventos](#15-eventos)
+        - [1.6 Propiedades computadas](#16-propiedades-computadas)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -168,6 +169,41 @@ Algunos ejemplos:
 - **v-on:submit** => Cuando se ejecuta el _submit_ de un formulario.
 - **v-on:submit.prevent** => Cuando se realiza un _submit_ y se previene que la página sea recargada.
     - [Event Modifiers](https://vuejs.org/v2/guide/events.html#Event-Modifiers).
+
+### 1.6 Propiedades computadas
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/computed.html)
+
+Las propiedades computadas son interesantes dado que permiten que el código del front-end esté más limpio gracias a que toda la lógica es escrita en dicha propiedad.
+
+_Hay que intentar añadir expresiones simples en las plantillas y no demasiado complejas._
+
+**Demasiada lógica en la plantilla**
+
+```html
+<h1>{{ mensaje.split('').reverse().join('') }}</h1>
+```
+
+**Solución mediante propiedades computadas**
+
+```html
+<h1>{{ mensajeAlReves }}</h1>
+```
+
+```js
+new Vue({
+    el: 'main',
+    data: {
+        mensaje: 'Hola mundo ^^',
+    },
+    computed: {
+        mensajeAlReves() {
+            return this.mensaje.split('').reverse().join('');
+        }
+    }
+});
+```
+
 
 # Bibliografía Web
 

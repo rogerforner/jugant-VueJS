@@ -8,17 +8,7 @@
 </head>
 <body>
     <main>
-        <ul>
-            <li v-for="tarea in tareas">{{ tarea }}</li>
-        </ul>
-
-        <form v-on:submit.prevent="agregarTarea">
-            <input type="text" placeholder="Introduce una tarea"
-                v-model="nuevaTarea">
-            <input type="submit" value="Enviar tarea">
-        </form>
-
-        <pre>{{ $data }}</pre>
+        <h1>{{ mensajeAlReves }}</h1>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
