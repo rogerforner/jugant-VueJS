@@ -178,6 +178,8 @@ Las propiedades computadas son interesantes dado que permiten que el código del
 
 _Hay que intentar añadir expresiones simples en las plantillas y no demasiado complejas._
 
+> Un método se evalúa constantemente mientras que una propiedad computada se evalúa cuando hay un cambio en las despendencias.
+
 **Demasiada lógica en la plantilla**
 
 ```html
