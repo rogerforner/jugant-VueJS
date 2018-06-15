@@ -1,14 +1,14 @@
 new Vue({
     el: 'main',
     data: {
-        tareas: [
-            {titulo: 'tarea 1', completado: false},
-            {titulo: 'tarea 2', completado: false},
-            {titulo: 'tarea 3', completado: false},
-            {titulo: 'tarea 4', completado: false},
-            {titulo: 'tarea 5', completado: false},
-            {titulo: 'tarea 6', completado: false},
-        ]
+        mostrar: true,
+        mensajes: {
+            transicion: 'transición CSS con Vue',
+            animación: 'Animaciones CSS con Vue',
+            animationCustom: 'Animaciones CSS personalizadas con Vue',
+            cargaPagina: 'transiciones CSS en el renderizado inicial, con Vue',
+            entreElementos: 'Transiciones CSS entre elementos, con Vue'
+        }
     },
     methods: {
         completarTarea(tarea) {

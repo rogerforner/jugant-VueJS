@@ -13,6 +13,7 @@
         - [1.7 Filtros](#17-filtros)
         - [1.8 La instancia Vue](#18-la-instancia-vue)
         - [1.9 Data binding en atributos y clases](#19-data-binding-en-atributos-y-clases)
+        - [1.10 Transiciones y animaciones](#110-transiciones-y-animaciones)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -292,6 +293,191 @@ Mediante la propiedad **v-bind** de Vue podemos manipular los valores de los atr
 
 ```html
 <button :class="{active: isActive}"></button>
+```
+
+### 1.10 Transiciones y animaciones
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/transitions.html)
+
+**Transiciones**
+
+- [Transition Classes](https://vuejs.org/v2/guide/transitions.html#Transition-Classes)
+
+```html
+<head>
+    <style>
+        .nombreClase-enter {
+            opacity: 0;
+        }
+        .nombreClase-enter-active {
+            transition: opacity 1s;
+        }
+        .nombreClase-leave-to {
+            opacity: 0;
+        }
+        .nombreClase-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <transition name="nombreClase">
+            ...
+        </transition>
+    </main>
+</body>
+```
+
+**Animaciones**
+
+- [CSS Animations](https://vuejs.org/v2/guide/transitions.html#CSS-Animations)
+- [W3Schools](https://www.w3schools.com/css/css3_animations.asp)
+
+```html
+<head>
+    <style>
+        .nombreClase-enter-active {
+            animation: bounce-in .5s;
+        }
+        .nombreClase-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <transition name="nombreClase">
+            ...
+        </transition>
+    </main>
+</body>
+```
+
+**Mediante librerías externas**
+
+- [Custom Transition Classes](https://vuejs.org/v2/guide/transitions.html#Custom-Transition-Classes)
+- [Animate.css](https://daneden.github.io/animate.css/)
+    - U otras...
+
+```html
+<head>
+    <link rel="stylesheet" href="https://cdn.x/libreria.min.css">
+</head>
+<body>
+    <main>
+        <transition name="cualquierNombreDescriptivo"
+            enter-active-class="claseEntrada"
+            leave-active-class="claseSalida">
+            ...
+        </transition>
+    </main>
+</body>
+```
+
+**Transiciones en el renderizado inicial (automáticas)**
+
+- [Transitions on Initial Render](https://vuejs.org/v2/guide/transitions.html#Transitions-on-Initial-Render)
+
+```html
+<head>
+    <style>
+        .nombreClase-enter {
+            opacity: 0;
+        }
+        .nombreClase-enter-active {
+            transition: opacity 1s;
+        }
+        .nombreClase-leave-to {
+            opacity: 0;
+        }
+        .nombreClase-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <transition name="nombreClase" appear>
+            ...
+        </transition>
+    </main>
+</body>
+```
+
+**Transiciones entre elementos**
+
+- [Transitioning Between Elements](https://vuejs.org/v2/guide/transitions.html#Transitioning-Between-Elements)
+
+Si los elementos son iguales (h4 y h4 o p y p etc.) debemos añadirles `key` y, a éte, un valor que los distinga.
+
+```html
+<head>
+    <style>
+        .nombreClase-enter {
+            opacity: 0;
+        }
+        .nombreClase-enter-active {
+            transition: opacity 1s;
+        }
+        .nombreClase-leave-to {
+            opacity: 0;
+        }
+        .nombreClase-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <transition name="nombreClase" appear>
+            <h4 v-if="mostrar" v-text="mensajes.entreElementos" key="aparecer"></h4>
+            <h4 v-else key="ocultar">Ningún mensaje</h4>
+            ...
+        </transition>
+    </main>
+</body>
+```
+
+Para evitar que, después de una transición o animación, el elemento haga un movimiento para ocupar el sitio de otro elemento desaparecido, debemos hacer uso de las propiedad `mode`.
+
+- [Transition Modes](https://vuejs.org/v2/guide/transitions.html#Transition-Modes)
+
+```html
+<head>
+    <style>
+        .nombreClase-enter {
+            opacity: 0;
+        }
+        .nombreClase-enter-active {
+            transition: opacity 1s;
+        }
+        .nombreClase-leave-to {
+            opacity: 0;
+        }
+        .nombreClase-leave-active {
+            transition: opacity 1s;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <transition name="nombreClase" mode="out-in">
+            ...
+        </transition>
+    </main>
+</body>
 ```
 
 # Bibliografía Web

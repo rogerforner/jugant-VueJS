@@ -5,27 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aprendiendo Vue.js y Firebase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <style>
-    .completada {
-        background-color: greenyellow;
-    }
+        /* Transiciones */
+        .aparecer-enter {
+            opacity: 0;
+        }
+        .aparecer-enter-active {
+            transition: opacity 1s;
+        }
+        .aparecer-leave-to {
+            opacity: 0;
+        }
+        .aparecer-leave-active {
+            transition: opacity 1s;
+        }
+
+        /* Animaciones */
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+            .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
     <main>
-        <p>Tareas completadas: <span v-text="tareasCompletadas.length"></span></p>
-        <ul>
-            <li @click="completarTarea(tarea)"
-                v-for="tarea in tareas">
-                <ul style="list-style: none;">
-                    <li><strong>Tarea:</strong>{{ tarea.titulo }}</li>
-                    <li :class="{completada: tarea.completado}">
-                        <strong>Completada:</strong>{{ tarea.completado }}
-                    </li>
-                </ul>
-                <hr style="width: 185px; margin-left: 0">
-            </li>
-        </ul>
+        <button @click="mostrar = !mostrar">Mostrar/Ocultar</button>
+
+        <h2>Transiciones</h2>
+        <transition name="aparecer">
+            <h4 v-if="mostrar" v-text="mensajes.transicion"></h4>
+        </transition>
+
+        <h2>Animaciones</h2>
+        <transition name="bounce">
+            <h4 v-if="mostrar" v-text="mensajes.animación"></h4>
+        </transition>
+
+        <h2>Animaciones (Animate.css)</h2>
+        <transition name="animate.css"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated bounceOut">
+            <h4 v-if="mostrar" v-text="mensajes.animationCustom"></h4>
+        </transition>
+
+        <h2>Transiciones en la carga de la página</h2>
+        <transition name="aparecer" appear>
+            <h4 v-if="mostrar" v-text="mensajes.cargaPagina"></h4>
+        </transition>
+
+        <h2>Transiciones entre elementos</h2>
+        <transition name="aparecer" mode="out-in">
+            <h4 v-if="mostrar" v-text="mensajes.entreElementos" key="aparecer"></h4>
+            <h4 v-else key="ocultar">Ningún mensaje</h4>
+        </transition>
 
         <pre>{{ $data }}</pre>
     </main>
