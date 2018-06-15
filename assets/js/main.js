@@ -1,23 +1,17 @@
 new Vue({
     el: 'main',
+    mounted() {
+        this.cargarPersonas();
+    },
     data: {
-        mostrar: true,
-        mensajes: {
-            transicion: 'transición CSS con Vue',
-            animación: 'Animaciones CSS con Vue',
-            animationCustom: 'Animaciones CSS personalizadas con Vue',
-            cargaPagina: 'transiciones CSS en el renderizado inicial, con Vue',
-            entreElementos: 'Transiciones CSS entre elementos, con Vue'
-        }
+        personas: []
     },
     methods: {
-        completarTarea(tarea) {
-            tarea.completado = !tarea.completado;
-        }
-    },
-    computed: {
-        tareasCompletadas() {
-            return this.tareas.filter((tarea) => tarea.completado);
+        cargarPersonas() {
+            // GET
+            this.$http.get('https://randomuser.me/api/?results=50').then(response => {
+                this.personas = response.body.results;
+            });
         }
     }
 });

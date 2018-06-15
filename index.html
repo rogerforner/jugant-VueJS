@@ -43,40 +43,14 @@
 </head>
 <body>
     <main>
-        <button @click="mostrar = !mostrar">Mostrar/Ocultar</button>
-
-        <h2>Transiciones</h2>
-        <transition name="aparecer">
-            <h4 v-if="mostrar" v-text="mensajes.transicion"></h4>
-        </transition>
-
-        <h2>Animaciones</h2>
-        <transition name="bounce">
-            <h4 v-if="mostrar" v-text="mensajes.animación"></h4>
-        </transition>
-
-        <h2>Animaciones (Animate.css)</h2>
-        <transition name="animate.css"
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated bounceOut">
-            <h4 v-if="mostrar" v-text="mensajes.animationCustom"></h4>
-        </transition>
-
-        <h2>Transiciones en la carga de la página</h2>
-        <transition name="aparecer" appear>
-            <h4 v-if="mostrar" v-text="mensajes.cargaPagina"></h4>
-        </transition>
-
-        <h2>Transiciones entre elementos</h2>
-        <transition name="aparecer" mode="out-in">
-            <h4 v-if="mostrar" v-text="mensajes.entreElementos" key="aparecer"></h4>
-            <h4 v-else key="ocultar">Ningún mensaje</h4>
-        </transition>
-
+        <img v-for="persona in personas"
+            :src="persona.picture.thumbnail"
+            :alt="persona.name.first">
         <pre>{{ $data }}</pre>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>

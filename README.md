@@ -480,6 +480,59 @@ Para evitar que, después de una transición o animación, el elemento haga un m
 </body>
 ```
 
+### 1.11 Ajax con vue-resource
+
+- [vue-resource](https://github.com/pagekit/vue-resource)
+
+*vue-resource* es un cliente HTTP para Vue.js y lo podemos añadir por **CDN**.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+```
+
+Ejecutaremos los métodos que realizan las peticiones AJAX mediante la instancia `mounted` del ciclo de vida de Vue.
+
+- [The Vue Instance, Lifecycle](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
+
+```js
+new Vue({
+    el: 'main',
+    mounted() {
+        this.ajaxMethod();
+    },
+    methods: {
+        ajaxMethod() {
+            ...
+        }
+    }
+});
+```
+
+El resultado de un petición AJAX será guardado en una variable/array que habremos definido en `data: {}`.
+
+```js
+new Vue({
+    el: 'main',
+    mounted() {
+        this.ajaxMethod();
+    },
+    data: {
+        items: []
+    }
+    methods: {
+        ajaxMethod() {
+            // GET
+            this.$http.get('https://randomuser.me/api/?results=50').then(response => {
+                this.items = response.body.results;
+            });
+        }
+    }
+});
+```
+
 # Bibliografía Web
 
-- [_Aprende Vue2 y Firebase paso a paso_](https://wmedia.teachable.com/p/aprende-vue2-y-firebase-paso-a-paso), de Wmedia.
+> [_Aprende Vue2 y Firebase paso a paso_](https://wmedia.teachable.com/p/aprende-vue2-y-firebase-paso-a-paso), de Wmedia.
+
+
+- [Random User Generator](https://randomuser.me/)
