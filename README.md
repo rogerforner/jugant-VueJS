@@ -524,6 +524,44 @@ new Vue({
             // GET
             this.$http.get('https://randomuser.me/api/?results=50').then(response => {
                 this.items = response.body.results;
+            }, response => {
+                // error callback
+            });
+        }
+    }
+});
+```
+
+### 1.12 Ajax con axios
+
+- [axios](https://github.com/axios/axios)
+
+*axios* es un cliente HTTP para Vue.js y lo podemos añadir por **CDN**.
+
+```html
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+```
+
+La forma de utilizar *axios* no difiere de la de *vue-resource*. Con la excepción de que cada uno realiza la petición con un código escrito de diferente manera.
+
+```js
+new Vue({
+    el: 'main',
+    mounted() {
+        this.ajaxMethod();
+    },
+    data: {
+        items: []
+    }
+    methods: {
+        ajaxMethod() {
+            // GET
+            axios.get('https://randomuser.me/api/?results=50')
+            .then(function (response) {
+                this.items = response.data.results;
+            })
+            .catch(function (error) {
+                console.log(error);
             });
         }
     }
