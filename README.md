@@ -117,9 +117,6 @@ vm = new Vue({
     }
 });
 ```
-- 0 - tarea 1 [baja]
-- 1 - tarea 2 [alta]
-- 2 - tarea 3 [alta]
 
 ```html
 <ul>
@@ -128,6 +125,10 @@ vm = new Vue({
     </li>
 </ul>
 ```
+
+- 0 - tarea 1 [baja]
+- 1 - tarea 2 [alta]
+- 2 - tarea 3 [alta]
 
 **Objeto**
 
