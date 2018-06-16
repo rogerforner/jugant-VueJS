@@ -656,6 +656,82 @@ Vue.component('las-tareas', {
 <las-tareas></las-tareas>
 ```
 
+### 2.2 Component templates
+
+**Template en la propia instancia del componente**
+
+```js
+Vue.component('nombreComponente', {
+    props: ['...'],
+    template: `
+        <div>
+            ...
+        </div>
+    `,
+    data() {...},
+    methods: {...}
+});
+```
+
+**Template fuera de la instancia del componente**
+
+```js
+Vue.component('nombreComponente', {
+    props: ['...'],
+    template: '#idScriptConTemplate',
+    data() {...},
+    methods: {...}
+});
+```
+
+En un `<script type="text/template"></script>`.
+
+```html
+<main>...</main>
+<script type="text/template" id="idScriptConTemplate">
+    <div>
+        ...
+    </div>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./assets/js/main.js"></script>
+```
+
+En un `<template></template>`.
+
+```html
+<main>...</main>
+<template id="idScriptConTemplate">
+    <div>
+        ...
+    </div>
+</template>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./assets/js/main.js"></script>
+```
+
+**Dentro del componente**
+
+```js
+Vue.component('nombreComponente', {
+    props: ['...'],
+    data() {...},
+    methods: {...}
+});
+```
+
+```html
+<main>
+    <nombreComponente inline-template>
+        <div>
+            ...
+        </div>
+    </nombreComponente>
+</main>
+```
+
 # Bibliografía Web
 
 > [_Aprende Vue2 y Firebase paso a paso_](https://wmedia.teachable.com/p/aprende-vue2-y-firebase-paso-a-paso), de Wmedia.

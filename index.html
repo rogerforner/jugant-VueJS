@@ -5,58 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aprendiendo Vue.js y Firebase</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-    <style>
-        /* Transiciones */
-        .aparecer-enter {
-            opacity: 0;
-        }
-        .aparecer-enter-active {
-            transition: opacity 1s;
-        }
-        .aparecer-leave-to {
-            opacity: 0;
-        }
-        .aparecer-leave-active {
-            transition: opacity 1s;
-        }
-
-        /* Animaciones */
-        .bounce-enter-active {
-            animation: bounce-in .5s;
-        }
-            .bounce-leave-active {
-            animation: bounce-in .5s reverse;
-        }
-        @keyframes bounce-in {
-            0% {
-                transform: scale(0);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-    </style>
 </head>
 <body>
     <main>
-        <h1>Tareas Locales</h1>
-        <mis-tareas :tareas="tareasLocales"></mis-tareas>
-        <hr>
-
-        <h1>Tareas AJAX</h1>
-        <mis-tareas :tareas="tareasAjax"></mis-tareas>
-        <hr>
-
-        <h1>Las tareas</h1>
-        <las-tareas></las-tareas>
+        <elegir-ganador :listado="personas" inline-template>
+                <div>
+                    <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
+                    <template v-else>
+                        <h1>Participantes</h1>
+                        <ul>
+                            <li v-for="persona in listado">{{ persona }}</li>
+                        </ul>
+                    </template>
+                    <button @click="elegirGanador">Elegir ganador</button>
+                </div>
+        </elegir-ganador>
 
         <pre>{{ $data }}</pre>
     </main>
 
+    <!-- <template id="elegir-ganador-template">
+        <div>
+            <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
+            <template v-else>
+                <h1>Participantes</h1>
+                <ul>
+                    <li v-for="persona in listado">{{ persona }}</li>
+                </ul>
+            </template>
+            <button @click="elegirGanador">Elegir ganador</button>
+        </div>
+    </template> -->
+    <!-- <script type="text/template" id="elegir-ganador-template">
+        <div>
+            <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
+            <template v-else>
+                <h1>Participantes</h1>
+                <ul>
+                    <li v-for="persona in listado">{{ persona }}</li>
+                </ul>
+            </template>
+            <button @click="elegirGanador">Elegir ganador</button>
+        </div>
+    </script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/main.js"></script>

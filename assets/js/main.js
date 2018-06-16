@@ -1,55 +1,42 @@
-Vue.component('mis-tareas', {
-    props: ['tareas'],
-    template: `<ul><li v-for="tarea in tareas">{{ tarea.title }}</li></ul>`
-});
-
-Vue.component('las-tareas', {
-    template: `<ul><li v-for="tarea in tareasAjax">{{ tarea.title }}</li></ul>`,
-    mounted() {
-        this.cargarTareas();
-    },
+Vue.component('elegir-ganador', {
+    props: ['listado'],
+    // template: '#elegir-ganador-template',
+    // template: `
+    //     <div>
+    //         <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
+    //         <template v-else>
+    //             <h1>Participantes</h1>
+    //             <ul>
+    //                 <li v-for="persona in listado">{{ persona }}</li>
+    //             </ul>
+    //         </template>
+    //         <button @click="elegirGanador">Elegir ganador</button>
+    //     </div>
+    // `,
     data() {
         return {
-            tareasAjax: []
+            ganador: false,
+            participantes: this.listado
         }
     },
     methods: {
-        cargarTareas() {
-            // GET
-            axios.get('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => {
-                this.tareasAjax = response.data;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        },
+        elegirGanador() {
+            let cantidad = this.participantes.length;
+            let indice   = Math.floor((Math.random() * cantidad));
+
+            this.ganador = this.participantes[indice - 1];
+        }
     }
 });
 
 new Vue({
     el: 'main',
-    mounted() {
-        this.cargarTareas();
-    },
     data: {
-        tareasAjax: [],
-        tareasLocales: [
-            {title: 'Tarea 1'},
-            {title: 'Tarea 2'},
-            {title: 'Tarea 3'}
+        personas: [
+            'Roger',
+            'Cinta',
+            'Inco',
+            'Zarco'
         ]
     },
-    methods: {
-        cargarTareas() {
-            // GET
-            axios.get('https://jsonplaceholder.typicode.com/todos')
-            .then((response) => {
-                this.tareasAjax = response.data;
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        },
-    }
 });
