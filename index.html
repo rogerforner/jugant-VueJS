@@ -43,9 +43,17 @@
 </head>
 <body>
     <main>
-        <img v-for="persona in personas"
-            :src="persona.picture.thumbnail"
-            :alt="persona.name.first">
+        <h1>Tareas Locales</h1>
+        <mis-tareas :tareas="tareasLocales"></mis-tareas>
+        <hr>
+
+        <h1>Tareas AJAX</h1>
+        <mis-tareas :tareas="tareasAjax"></mis-tareas>
+        <hr>
+
+        <h1>Las tareas</h1>
+        <las-tareas></las-tareas>
+
         <pre>{{ $data }}</pre>
     </main>
 

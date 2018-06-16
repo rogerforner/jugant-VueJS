@@ -569,9 +569,97 @@ new Vue({
 });
 ```
 
+## 2. Componentes en Vue.js
+
+### 2.1 Introducción a componentes
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components.html)
+
+**Crear el componente**
+
+Podemos crear un componente que renderize unos datos pasados a través de propiedades (_props_), éstas insertadas mediante los atributos propios de una etiqueta HTML `<mis-tareas :tareas="tareasAjax">`.
+
+> Este tipo de componente depende de la instancia Vue que proporciona los datos (_data_).
+
+```js
+Vue.component('mis-tareas', {
+    props: ['tareas'],
+    template: `<p>Plantilla HTML</p>`
+});
+```
+
+**Instanciar Vue**
+
+```js
+new Vue({
+    el: 'main',
+    mounted() {
+        this.cargarTareas();
+    },
+    data: {
+        tareasAjax: []
+    },
+    methods: {
+        cargarTareas() {
+            // GET
+            axios.get('https://jsonplaceholder.typicode.com/todos')
+            .then((response) => {
+                this.tareasAjax = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    }
+});
+```
+
+**Utilizar el componente**
+
+```html
+<mis-tareas :tareas="tareasAjax"></mis-tareas>
+```
+
+**Crear un componente independiente**
+
+Podemos crear un componente que renderize sus propios datos, con lo que no es necesario utilizar propiedades (_props_).
+
+> Este tipo de componente **no** depende de la instancia Vue porqué consume sus propios datos (_data_).
+
+```js
+Vue.component('las-tareas', {
+    template: `<p>Plantilla HTML</p>`,
+    mounted() {
+        this.cargarTareas();
+    },
+    data() {
+        return {
+            tareasAjax: []
+        }
+    },
+    methods: {
+        cargarTareas() {
+            // GET
+            axios.get('https://jsonplaceholder.typicode.com/todos')
+            .then((response) => {
+                this.tareasAjax = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+    }
+});
+```
+
+```html
+<las-tareas></las-tareas>
+```
+
 # Bibliografía Web
 
 > [_Aprende Vue2 y Firebase paso a paso_](https://wmedia.teachable.com/p/aprende-vue2-y-firebase-paso-a-paso), de Wmedia.
 
 
+- [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 - [Random User Generator](https://randomuser.me/)
