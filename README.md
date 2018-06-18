@@ -14,7 +14,7 @@
         - [1.8 La instancia Vue](#18-la-instancia-vue)
         - [1.9 Data binding en atributos y clases](#19-data-binding-en-atributos-y-clases)
         - [1.10 Transiciones y animaciones](#110-transiciones-y-animaciones)
-    - [2. COmponentes en Vue.js](#2-componentes-en-vuejs)
+    - [2. Componentes en Vue.js](#2-componentes-en-vuejs)
         - [2.1 Introducción a componentes](#21-introducción-a-componentes)
         - [2.2 Component templates](#22-component-templates)
         - [2.3 Component properties](#23-component-properties)
