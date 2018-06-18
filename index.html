@@ -5,31 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aprendiendo Vue.js y Firebase</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
     <main>
-        <candidato v-for="candidato in candidatos" :key="candidato.login.uuid"
-            :nombre="candidato.name.first"
-            :correoe="candidato.email"
-            :imagen="candidato.picture.thumbnail"
-            :location="candidato.location"></candidato>
+        <alerta tipo="alerta--exito" posicion="alerta--arriba-derecha">
+            <template slot="header">Todo ok :)</template>
+            <template>Este es el nuevo contenido de la alerta :)</template>
+            <template slot="footer">Puedes continuar con normalidad</template>
+        </alerta>
+    
+        <alerta tipo="alerta--error" posicion="alerta--arriba-izquierda">
+            <template slot="header">Error fatal</template>
+            <template>El mundo está a punto de implosionar</template>
+            <template slot="footer">RIP</template>
+        </alerta>
+    
+        <alerta tipo="alerta--advertencia" posicion="alerta--abajo-izquierda">
+            <template slot="header">Atención</template>
+            <template>Este es el nuevo contenido de la alerta :)</template>
+            <template slot="footer">Puedes continuar con normalidad</template>
+        </alerta>
 
         <pre>{{ $data }}</pre>
     </main>
-
-    <template id="candidato-template">
-        <blockquote>
-            <img :src="imagen">
-            <h1>{{ nombre }}</h1>
-            <h2>{{ correoe }}</h2>
-            <ul>
-                <li v-for="(value, key, index) in location">
-                    {{ value }}
-                </li>
-            </ul>
-            <hr>
-        </blockquote>
-    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

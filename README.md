@@ -21,6 +21,7 @@
         - [2.2 Component templates](#22-component-templates)
         - [2.3 Component properties](#23-component-properties)
         - [2.4 Validación de propiedades](#24-validación-de-propiedades)
+        - [2.5 Slots & named slots](#25-slots-&-named-slots)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -807,7 +808,7 @@ Vue.component('nombreComponente', {
 - [Vue.js (guía)](https://vuejs.org/v2/guide/components-props.html#Prop-Validation)
 
 ```js
-Vue.component('mis-tareas', {
+Vue.component('nombreComponente', {
     props: {
         prop1: {
             type: [String, Number, Boolean, Array...], // null = *
@@ -834,6 +835,37 @@ Vue.component('mis-tareas', {
     },
     ...
 });
+```
+
+### 2.5 Slots & named slots
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots)
+
+```js
+Vue.component('nombreComponente', {
+    props: ['prop1', 'propN'],
+    template: `
+        <section>
+            <header>
+                <slot name="header">Texto por defecto del "header"</slot>
+            </header>
+            <article>
+                <slot>Texto por defecto del "article"</slot>
+            </article>
+            <footer>
+                <slot name="footer">Texto por defecto del footer</slot>
+            </footer>
+        </section>
+    `,
+});
+```
+
+```html
+<nombreComponente>
+    <template slot="header">Sobreescribe el "slot name='header'" del "template" del componente</template>
+    <template>Sobreescribe el "slot" anónimo del "template" del componente</template>
+    <template slot="footer">Sobreescribe el "slot name='footer'" del "template" del componente</template>
+</nombreComponente>
 ```
 
 # Bibliografía Web

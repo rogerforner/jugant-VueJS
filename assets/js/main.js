@@ -1,41 +1,23 @@
-Vue.component('candidato', {
-    // props: ['nombre', 'correoe', 'imagen'],
-    props: {
-        nombre: {
-            type: [String, Array], // null = *
-            required: true
-        },
-        correoe: {
-            type: String,
-            default: 'default@email.example'
-        },
-        imagen: String,
-        location: {
-            type: Object,
-            default() {
-                return {
-                    ciudad: 'Tortosa'
-                }
-            }
-        }
-    },
-    template: '#candidato-template',
+Vue.component('alerta', {
+    props: ['tipo', 'posicion'],
+    template: `
+        <section class="alerta" :class="[tipo, posicion]">
+            <header class="alerta__header">
+                <slot name="header">Hola</slot>
+            </header>
+            <div class="alerta__contenido">
+                <slot>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum dui justo, at molestie orci dapibus
+                    vitae.
+                </slot>
+            </div>
+            <footer class="alerta__footer">
+                <slot name="footer">Este es el texto del footer</slot>
+            </footer>
+        </section>
+    `,
 });
 
 new Vue({
     el: 'main',
-    mounted() {
-        this.obtenerCandidatos();
-    },
-    data: {
-        candidatos: []
-    },
-    methods: {
-        obtenerCandidatos() {
-            axios.get('https://randomuser.me/api/?results=50')
-            .then((response) => {
-                this.candidatos = response.data.results;
-            });
-        }
-    }
 });
