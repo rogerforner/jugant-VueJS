@@ -8,46 +8,11 @@
 </head>
 <body>
     <main>
-        <elegir-ganador :listado="personas" inline-template>
-                <div>
-                    <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
-                    <template v-else>
-                        <h1>Participantes</h1>
-                        <ul>
-                            <li v-for="persona in listado">{{ persona }}</li>
-                        </ul>
-                    </template>
-                    <button @click="elegirGanador">Elegir ganador</button>
-                </div>
-        </elegir-ganador>
+        <autor :nombre="autor"></autor>
 
         <pre>{{ $data }}</pre>
     </main>
 
-    <!-- <template id="elegir-ganador-template">
-        <div>
-            <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
-            <template v-else>
-                <h1>Participantes</h1>
-                <ul>
-                    <li v-for="persona in listado">{{ persona }}</li>
-                </ul>
-            </template>
-            <button @click="elegirGanador">Elegir ganador</button>
-        </div>
-    </template> -->
-    <!-- <script type="text/template" id="elegir-ganador-template">
-        <div>
-            <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
-            <template v-else>
-                <h1>Participantes</h1>
-                <ul>
-                    <li v-for="persona in listado">{{ persona }}</li>
-                </ul>
-            </template>
-            <button @click="elegirGanador">Elegir ganador</button>
-        </div>
-    </script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./assets/js/main.js"></script>

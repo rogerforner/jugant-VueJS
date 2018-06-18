@@ -1,30 +1,17 @@
-Vue.component('elegir-ganador', {
-    props: ['listado'],
-    // template: '#elegir-ganador-template',
-    // template: `
-    //     <div>
-    //         <h1 v-if="ganador">El ganador es: {{ ganador }}</h1>
-    //         <template v-else>
-    //             <h1>Participantes</h1>
-    //             <ul>
-    //                 <li v-for="persona in listado">{{ persona }}</li>
-    //             </ul>
-    //         </template>
-    //         <button @click="elegirGanador">Elegir ganador</button>
-    //     </div>
-    // `,
-    data() {
-        return {
-            ganador: false,
-            participantes: this.listado
-        }
+Vue.component('autor', {
+    props: ['nombre'],
+    mounted() {
+        console.log(this.nombre);
     },
+    template: `
+        <div>
+            <h2>{{ nombre }}</h2>
+            <button @click="cambiarProp">Cambiar nombre</button>
+        </div>
+    `,
     methods: {
-        elegirGanador() {
-            let cantidad = this.participantes.length;
-            let indice   = Math.floor((Math.random() * cantidad));
-
-            this.ganador = this.participantes[indice - 1];
+        cambiarProp() {
+            this.nombre = this.toUpperCase();
         }
     }
 });
@@ -32,11 +19,6 @@ Vue.component('elegir-ganador', {
 new Vue({
     el: 'main',
     data: {
-        personas: [
-            'Roger',
-            'Cinta',
-            'Inco',
-            'Zarco'
-        ]
+        autor: 'Roger'
     },
 });

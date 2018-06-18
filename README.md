@@ -14,6 +14,10 @@
         - [1.8 La instancia Vue](#18-la-instancia-vue)
         - [1.9 Data binding en atributos y clases](#19-data-binding-en-atributos-y-clases)
         - [1.10 Transiciones y animaciones](#110-transiciones-y-animaciones)
+    - [2. COmponentes en Vue.js]()
+        - [2.1 Introducción a componentes]()
+        - [2.2 Component templates]()
+        - [2.3 Component properties]()
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -730,6 +734,69 @@ Vue.component('nombreComponente', {
         </div>
     </nombreComponente>
 </main>
+```
+
+### 2.3 Component properties
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components-props.html)
+
+```js
+Vue.component('nombreComponente', {
+    props: ['...'],
+    ...
+});
+```
+
+Las propiedades son  accesibles mediante _this_ y las pasaremos como atributos en la etiqueta HTML que representa el componente.
+
+```js
+Vue.component('nombreComponente', {
+    props: ['atributo1', 'atributoN'],
+    mounted() {
+        console.log(this.atributo1);
+    }
+    ...
+});
+```
+
+```html
+<main>
+    <nombreComponente v-bind:atributo1="unValor" :atributoN="unValor"></nombreComponente>
+</main>
+```
+
+**Data Flow**
+
+El _data flow_ es de padre a hijo y no al revés. Si intentamos sobreescribir una variable que se pasa como propiedad al componente, el valor de ésta no podrá sobreescribirse desde el componente.
+
+- [One-Way Data Flow](https://vuejs.org/v2/guide/components-props.html#One-Way-Data-Flow)
+
+Aunque no podamos mutar el valor de una propiedad del padre, sí podremos utilizar éste para alimentar otras variables del componente.
+
+```js
+Vue.component('nombreComponente', {
+    props: ['atributoComponente'],
+    data() {
+        return {
+            nuestraVariable: this.atributoComponente;
+        }
+    }
+    ...
+});
+```
+
+_O también:_
+
+```js
+Vue.component('nombreComponente', {
+    props: ['atributoComponente'],
+    computed: {
+        methodComputed: function () {
+            return this.atributoComponente.trim().toLowerCase();
+        }
+    }
+    ...
+});
 ```
 
 # Bibliografía Web
