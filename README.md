@@ -22,6 +22,7 @@
         - [2.3 Component properties](#23-component-properties)
         - [2.4 Validación de propiedades](#24-validación-de-propiedades)
         - [2.5 Slots & named slots](#25-slots-&-named-slots)
+        - [2.6 Scoped slots](#26-scoped-slots)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -867,6 +868,10 @@ Vue.component('nombreComponente', {
     <template slot="footer">Sobreescribe el "slot name='footer'" del "template" del componente</template>
 </nombreComponente>
 ```
+
+### 2.6 Scoped slots
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
 
 # Bibliografía Web
 

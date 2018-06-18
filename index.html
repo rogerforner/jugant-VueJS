@@ -9,26 +9,22 @@
 </head>
 <body>
     <main>
-        <alerta tipo="alerta--exito" posicion="alerta--arriba-derecha">
-            <template slot="header">Todo ok :)</template>
-            <template>Este es el nuevo contenido de la alerta :)</template>
-            <template slot="footer">Puedes continuar con normalidad</template>
-        </alerta>
-    
-        <alerta tipo="alerta--error" posicion="alerta--arriba-izquierda">
-            <template slot="header">Error fatal</template>
-            <template>El mundo está a punto de implosionar</template>
-            <template slot="footer">RIP</template>
-        </alerta>
-    
-        <alerta tipo="alerta--advertencia" posicion="alerta--abajo-izquierda">
-            <template slot="header">Atención</template>
-            <template>Este es el nuevo contenido de la alerta :)</template>
-            <template slot="footer">Puedes continuar con normalidad</template>
-        </alerta>
+        <mis-tareas :listado="tareas">
+            <template slot="tarea" scope="data">
+                <li>{{ data.titulo }}</li>
+            </template>
+        </mis-tareas>
 
         <pre>{{ $data }}</pre>
     </main>
+
+    <template id="mis-tareas-template">
+        <ul>
+            <slot name="tarea"
+                v-for="tarea in listado"
+                :titulo="tarea.titulo"></slot>
+        </ul>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
