@@ -14,10 +14,13 @@
         - [1.8 La instancia Vue](#18-la-instancia-vue)
         - [1.9 Data binding en atributos y clases](#19-data-binding-en-atributos-y-clases)
         - [1.10 Transiciones y animaciones](#110-transiciones-y-animaciones)
+        - [1.11 Ajax con vue-resource](#111-ajax-con-vue-resource)
+        - [1.12 Ajax con axios](#112-ajax-con-axios)
     - [2. Componentes en Vue.js](#2-componentes-en-vuejs)
         - [2.1 Introducción a componentes](#21-introducción-a-componentes)
         - [2.2 Component templates](#22-component-templates)
         - [2.3 Component properties](#23-component-properties)
+        - [2.4 Validación de propiedades](#24-validación-de-propiedades)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -795,6 +798,40 @@ Vue.component('nombreComponente', {
             return this.atributoComponente.trim().toLowerCase();
         }
     }
+    ...
+});
+```
+
+### 2.4 Validación de propiedades
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components-props.html#Prop-Validation)
+
+```js
+Vue.component('mis-tareas', {
+    props: {
+        prop1: {
+            type: [String, Number, Boolean, Array...], // null = *
+            required: true
+        },
+        prop2: {
+            type: null,
+            required: true
+        },
+        prop3: {
+            type: String,
+            default: 'valor por defecto del prop2 si no se pasa'
+        },
+        prop4: String,
+        prop5: {
+            type: Object,
+            default() {
+                return {
+                    value1: 'valor',
+                    valueN: '...',
+                }
+            }
+        }
+    },
     ...
 });
 ```

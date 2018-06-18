@@ -8,10 +8,28 @@
 </head>
 <body>
     <main>
-        <autor :nombre="autor"></autor>
+        <candidato v-for="candidato in candidatos" :key="candidato.login.uuid"
+            :nombre="candidato.name.first"
+            :correoe="candidato.email"
+            :imagen="candidato.picture.thumbnail"
+            :location="candidato.location"></candidato>
 
         <pre>{{ $data }}</pre>
     </main>
+
+    <template id="candidato-template">
+        <blockquote>
+            <img :src="imagen">
+            <h1>{{ nombre }}</h1>
+            <h2>{{ correoe }}</h2>
+            <ul>
+                <li v-for="(value, key, index) in location">
+                    {{ value }}
+                </li>
+            </ul>
+            <hr>
+        </blockquote>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
