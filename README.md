@@ -23,6 +23,7 @@
         - [2.4 Validación de propiedades](#24-validación-de-propiedades)
         - [2.5 Slots & named slots](#25-slots-&-named-slots)
         - [2.6 Scoped slots](#26-scoped-slots)
+        - [2.7 Custom events](#27-custom-events)
 - [Bibliografía Web](#bibliografia-web)
 
 # Curso (apuntes)
@@ -872,6 +873,34 @@ Vue.component('nombreComponente', {
 ### 2.6 Scoped slots
 
 - [Vue.js (guía)](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
+
+### 2.7 Custom events
+
+- [Vue.js (guía)](https://vuejs.org/v2/guide/components-custom-events.html)
+
+Nos permitirá comunicarnos del componente hijo, con _$emit()_, al padre.
+
+```js
+Vue.component('nombreComponente', {
+    ...
+    template: `
+        <section>
+            <a href="#" @click="methodConEmit">Cerrar</a>
+        </section>
+    `,
+    methods: {
+        methodConEmit() {
+            this.$emit('ocultar');
+        }
+    }
+});
+```
+
+```html
+<nombreComponente @ocultar="mostrarComponente = false">
+    ...
+</nombreComponente>
+```
 
 # Bibliografía Web
 
